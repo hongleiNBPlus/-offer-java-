@@ -27,35 +27,37 @@ package li.剑指offer.字符串.把字符串转换成整数;
  *      5.1 10 * res = bo and c > 7 (第二种边界情况)
  */
 public class Solution {
-    public int StrToInt(String str){
-        int flag = 1;
-        int temp = 0; //若没有标志位，就为0；有标志位就位1
-        int x;
-        int res = 0;//最终输出结果
-        int bo = Integer.MAX_VALUE / 10; //边界
-        //1、去除空格
-        char[] ch = str.trim().toCharArray();
+    public static void main(String[] args) {
+        int i = strToInt("-2232555");
+        System.out.println(i);
+    }
+    public static int strToInt(String str){
+        int flag = 1; //用来表示这个数的正负
+        int index = 0;
+        int bo = Integer.MAX_VALUE / 10; //边界值
+        char[] ch = str.toCharArray();
+        int res = 0;
 
-        if(ch[0] == '-') {
+        if (ch[0] == '-') {
+            index++;
             flag = -1;
-            temp += 1;
-        }else if(ch[0] == '+'){
-            temp += 1;
+        }else if (ch[0] == '+'){
+            index++;
         }
 
-        for (int i = temp; i < ch.length; i++) {
-            if(ch[i] < '0' || ch[i] > '9'){
-                break;
-            }
+        for (int i = index; i < ch.length; i++) {
+            if (ch[i] < '0' || ch[i] > '9') break;
 
-            x = ch[i] - '0';
+            int temp = ch[i] - '0';
 
-            if((res) > bo || (res) == bo && x > 7){
-                return flag == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            if (res > bo || res == bo && temp > 7){
+                return res = flag == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }else {
-                res = 10 * res + x;
+                res = res * 10 + temp;
             }
+
         }
-        return flag * res;
+
+        return res * flag;
     }
 }

@@ -13,28 +13,37 @@ package li.剑指offer.字符串.两数相加;
  * 然后将字符串翻转，就是最终结果
  */
 public class Solution {
-    public String addStrings(String num1, String num2) {
+    public static void main(String[] args) {
+        String res = addStrings("99999999999999999999999999999999", "2");
+        System.out.println(res);
+    }
+    public static String addStrings(String num1, String num2) {
         StringBuilder strb = new StringBuilder();
-        int indexA = num1.length() - 1;
-        int indexB = num2.length() - 1;
-        int carry = 0;  //表示进位
-        int temp; //两数与进位之和
+        int num1_index = num1.length() - 1;
+        int num2_index = num2.length() - 1;
+        int charry = 0; //表示进位
 
-        while (indexA >= 0 || indexB >= 0 ){
-            int numA = indexA >= 0 ? num1.charAt(indexA) - '0' : 0;
-            int numB = indexB >= 0 ? num2.charAt(indexB) - '0' : 0;
+        int num1_temp;
+        int num2_temp;
 
-            temp = numA + numB + carry;
-            carry = temp / 10; //是否有进位
+        int value;
 
-            strb.append(temp % 10);
+        while (num1_index >= 0 || num2_index >= 0){
+            num1_temp = num1_index >= 0 ? num1.charAt(num1_index) - '0' : 0;
+            num2_temp = num2_index >= 0 ? num2.charAt(num2_index) - '0' : 0;
 
-            indexA--;
-            indexB--;
+            value = num1_temp + num2_temp + charry;
+
+            charry = value / 10;
+
+            strb.append(value % 10);
+
+            num1_index--;
+            num2_index--;
         }
 
-        if (carry == 1) strb.append(carry); //判断两数相加是否有溢出
+        if (charry == 1) strb.append(charry);
 
-        return strb.reverse().toString();  //最后需要翻转字符串
+        return strb.reverse().toString();
     }
 }

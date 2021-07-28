@@ -29,8 +29,8 @@ public class Solution {
                 temp = array[l] * array[r];
                 if(temp < res){
                     res = temp;
-                    list.add(array[l]);
-                    list.add(array[r]);
+                    list.set(0,array[l]);
+                    list.set(1,array[r]);
                 }
                 l++;
                 r--;
