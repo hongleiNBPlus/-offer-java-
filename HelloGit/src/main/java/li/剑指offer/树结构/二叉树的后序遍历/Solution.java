@@ -24,14 +24,16 @@ public class Solution {
         list.add(root.val);
 
     }
-}
 
-class ListNode{
-    int val;
-    ListNode left;
-    ListNode right;
+    class ListNode{
+        int val;
+        ListNode left;
+        ListNode right;
 
-    public ListNode(int val){
-        this.val  = val;
+        public ListNode(int val){
+            this.val  = val;
+        }
     }
 }
+
+

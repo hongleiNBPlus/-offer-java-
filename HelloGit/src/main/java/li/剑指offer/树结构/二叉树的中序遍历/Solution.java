@@ -20,14 +20,15 @@ public class Solution {
         list.add(root.val);
         inOrder(root.right,list);
     }
-}
+    class ListNode{
+        int val;
+        ListNode left;
+        ListNode right;
 
-class ListNode{
-    int val;
-    ListNode left;
-    ListNode right;
-
-    public ListNode(int val){
-        this.val  = val;
+        public ListNode(int val){
+            this.val  = val;
+        }
     }
 }
+
+
