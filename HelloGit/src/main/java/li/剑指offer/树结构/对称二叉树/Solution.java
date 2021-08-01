@@ -36,7 +36,7 @@ public class Solution {
 
         if (l == null || r == null || l.val != r.val) return false;
 
-        return recur(l.left,r.right) && recur(l.right,r.left);
+        return recur(l.left, r.right) && recur(l.right,r.left);
     }
 
 
