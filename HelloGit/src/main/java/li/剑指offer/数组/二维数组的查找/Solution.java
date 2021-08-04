@@ -23,6 +23,7 @@ public class Solution {
 
         int indexA = array.length - 1;
         int indexB = 0;
+        
 
         while(indexA >= 0 && indexB < array[0].length){
             if(array[indexA][indexB] > target){
