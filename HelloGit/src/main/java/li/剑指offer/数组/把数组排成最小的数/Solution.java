@@ -20,13 +20,10 @@ public class Solution {
 
         for(int i : numbers) list.add(i);
 
-        list.sort(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                String s1 = o1 + "" + o2;
-                String s2 = o2 + "" + o1;
-                return s1.compareTo(s2);
-            }
+        list.sort((o1, o2) -> {
+            String s1 = o1 + "" + o2;
+            String s2 = o2 + "" + o1;
+            return s1.compareTo(s2);
         });
         for(int i : list) res.append(i);
 
