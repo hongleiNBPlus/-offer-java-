@@ -9,7 +9,6 @@ package li.剑指offer.链表.判断链表是否有环;
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        if (head == null || head.next == null) return false;
 
         // TODO 定义快慢指针
         ListNode slow = head;

@@ -1,45 +1,41 @@
 package li.剑指offer.链表.链表中倒数最后k个结点;
 
-
 /**
- * 题目：输入一个链表，输出一个链表，该输出链表包含原链表中从倒数第k个结点至尾节点的全部节点。
- * 如果该链表长度小于k，请返回一个长度为 0 的链表。
+ * 链表中倒数最后k个结点
  *
- * 示列：
- * 输入：{1,2,3,4,5},1
- * 返回值：{5}
+ * 思路：快慢指针 fast slow
+ * 先让fast想走k步，然后让fast slow 同时走，当fast为空停下来，此时fast = null，
+ * 由于fast与slow之间的距离一直保持在k，此时slow正好指向倒数第k个节点
  *
- * 解题思路；先遍历链表，获取链表长度size
- * 倒数第k个，正数第size - k个
- * 遍历获取第size - k个节点即可
+ * 边界考虑：需要判断k的值是否大于链表长度，若大于，返回null
+ *
  *
  */
+
 public class Solution {
-    public ListNode FindKthToTail (ListNode pHead, int k){
-        ListNode temp = pHead;
-        ListNode res = pHead;
-        int size = 0;
-        while(temp != null){
-            size++;
-            temp = temp.next;
+    public ListNode FindKthToTail (ListNode pHead, int k) {
+        ListNode quick = pHead;
+        ListNode slow = pHead;
+
+        for (int i = 0; i < k; i++) {
+
+            //这一步就是判断k是否大于链表长度
+            if (quick == null) return null;
+            quick = quick.next;
         }
 
-
-        if(size <= 0 || size < k){
-            return null;
+        while (quick != null){
+            quick = quick.next;
+            slow = slow.next;
         }
-
-        for(int i = 0; i < size - k; i++){
-            res = res.next;
-        }
-        return res;
+        return slow;
     }
 
-    public class ListNode {
+    private class ListNode{
         int val;
         ListNode next = null;
 
-        public ListNode(int val) {
+        public ListNode(int val){
             this.val = val;
         }
     }

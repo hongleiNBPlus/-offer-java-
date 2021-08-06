@@ -11,7 +11,6 @@ package li.剑指offer.链表.链表中环的入口结点;
  */
 public class Solution {
     public ListNode EntryNodeOfLoop(ListNode pHead) {
-        if (pHead == null || pHead.next == null) return null;
 
         //定义快慢指针
         ListNode slow = pHead;
