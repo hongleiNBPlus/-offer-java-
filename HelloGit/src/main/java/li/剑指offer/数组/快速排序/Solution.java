@@ -10,7 +10,6 @@ public class Solution {
     }
 
     public static void quickSort(int[] num, int left, int right){
-        if (left >= right) return;
 
         int i = left;
         int j = right;
@@ -29,7 +28,12 @@ public class Solution {
 
         num[i] = value;
 
-        quickSort(num,left,i-1);
-        quickSort(num,j+1,right);
+        if(i == j){
+            i--;
+            j++;
+        }
+
+        if (left < i) quickSort(num,left,i);
+        if (j < right)quickSort(num,j,right);
     }
 }
