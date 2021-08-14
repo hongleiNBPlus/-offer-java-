@@ -1,10 +1,12 @@
 package li.剑指offer.数组.快速排序;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
     public static void main(String[] args) {
-        int[] num = {7,4,3,8};
+        int[] num = {30,15,44,25,50,10,70};
         quickSort(num,0,num.length-1);
         System.out.println(Arrays.toString(num));
     }
@@ -27,6 +29,7 @@ public class Solution {
         }
 
         num[i] = value;
+        System.out.println(Arrays.toString(num));
 
         if(i == j){
             i--;
