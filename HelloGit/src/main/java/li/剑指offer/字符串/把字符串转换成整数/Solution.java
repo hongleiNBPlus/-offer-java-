@@ -28,14 +28,15 @@ package li.剑指offer.字符串.把字符串转换成整数;
  */
 public class Solution {
     public static void main(String[] args) {
-        int i = strToInt("-2232555");
+        int i = strToInt("1a33");
         System.out.println(i);
     }
     public static int strToInt(String str){
+        if(str.trim().length() < 1) return 0;
         int flag = 1; //用来表示这个数的正负
         int index = 0;
         int bo = Integer.MAX_VALUE / 10; //边界值
-        char[] ch = str.toCharArray();
+        char[] ch = str.trim().toCharArray();
         int res = 0;
 
         if (ch[0] == '-') {

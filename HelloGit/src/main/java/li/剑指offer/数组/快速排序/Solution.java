@@ -1,8 +1,6 @@
 package li.剑指offer.数组.快速排序;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Solution {
     public static void main(String[] args) {
@@ -29,7 +27,6 @@ public class Solution {
         }
 
         num[i] = value;
-        System.out.println(Arrays.toString(num));
 
         if(i == j){
             i--;

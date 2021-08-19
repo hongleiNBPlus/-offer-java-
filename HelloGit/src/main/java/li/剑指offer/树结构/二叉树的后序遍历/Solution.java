@@ -15,9 +15,7 @@ public class Solution {
     }
 
     void postOrder(ListNode root, List<Integer> list){
-        if (root == null){
-            return;
-        }
+        if (root == null) return;
 
         postOrder(root.left, list);
         postOrder(root.right,list);

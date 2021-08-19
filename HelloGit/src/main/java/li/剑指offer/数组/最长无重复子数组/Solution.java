@@ -14,17 +14,24 @@ import java.util.Map;
  * 解题思路：利用hashMap与双指针
  */
 public class Solution {
-    public int maxLength (int[] arr) {
+    public static void main(String[] args) {
+        String s = "abcabcbb";
+        int res = maxLength(s);
+        System.out.println(res);
+
+    }
+    public static int maxLength (String s) {
+        char[] chars = s.toCharArray();
         int res = 0;
         int start = 0;
-        Map<Integer,Integer> map = new HashMap<>();
-        for (int end = 0; end < arr.length; end++) {
+        Map<Character,Integer> map = new HashMap<>();
+        for (int end = 0; end < chars.length; end++) {
             //代表存在重复值，并更新重复值起始点
-            if (map.containsKey(arr[end])) start = Math.max(start, map.get(arr[end]) + 1);
+            if (map.containsKey(chars[end])) start = Math.max(start, map.get(chars[end]) + 1);
 
             //更新子数组的长度
             res = Math.max(res,end - start + 1);
-            map.put(arr[end],end);
+            map.put(chars[end],end);
         }
         return res;
     }

@@ -15,9 +15,7 @@ public class Solution {
     }
 
     void preOrder(ListNode root, List<Integer> list){
-        if (root == null){
-            return;
-        }
+        if (root == null) return;
         list.add(root.val);
         preOrder(root.left, list);
         preOrder(root.right,list);

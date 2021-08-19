@@ -1,6 +1,8 @@
 package li.剑指offer.数组.和为S的两个数字;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 题目：输入一个递增排序的数组和一个数字S，在数组中查找两个数，
@@ -9,31 +11,32 @@ import java.util.ArrayList;
  * 输入：[1,2,4,7,11,15],15
  * 返回值：[4,11]
  *
- * 解题思路：l 左指针 r 右指针
+ * 解题思路：HashMap
  */
 
 public class Solution {
-    public ArrayList<Integer> FindNumbersWithSum(int [] array, int sum){
+    public static void main(String[] args) {
+        int[] array = {1,2,6,7,11,15};
+        ArrayList<Integer> list = FindNumbersWithSum(array, 100);
+        System.out.println(list);
+    }
+    public static ArrayList<Integer> FindNumbersWithSum(int [] array, int sum){
         ArrayList<Integer> list = new ArrayList<>();
+        Map<Integer, Integer> map = new HashMap<>();
         int temp;
-        int res = Integer.MAX_VALUE;
-        int l = 0;
-        int r = array.length - 1;
-
-        while (l < r){
-            if(array[l] + array[r] < sum){
-                l++;
-            }else if(array[l] + array[r] > sum){
-                r--;
-            }else {
-                temp = array[l] * array[r];
-                if(temp < res){
-                    res = temp;
-                    list.set(0,array[l]);
-                    list.set(1,array[r]);
+        int value;
+        int res = 0;
+        for (int i = 0; i < array.length; i++) {
+            temp = sum - array[i];
+            if(!map.containsKey(temp)) map.put(array[i],i);
+            else {
+                value = array[i] * temp;
+                if(value > res){
+                    res = value;
+                    list.clear();
+                    list.add(array[i]);
+                    list.add(temp);
                 }
-                l++;
-                r--;
             }
         }
         return list;

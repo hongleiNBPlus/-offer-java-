@@ -28,7 +28,7 @@ package li.剑指offer.树结构.对称二叉树;
  */
 public class Solution {
     boolean isSymmetrical(TreeNode pRoot) {
-        return pRoot == null ? true : recur(pRoot.left,pRoot.right);
+        return pRoot == null || recur(pRoot.left, pRoot.right);
     }
 
     boolean recur(TreeNode l, TreeNode r){

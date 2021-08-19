@@ -18,7 +18,7 @@ public class Solution {
     public RandomListNode Clone(RandomListNode pHead) {
         if (pHead == null) return null;
 
-        //创建一个map来存放原始节点为key，复制原始节点为value的kv值
+        //创建一个map来存放原始节点为key，复制原始节点为value
         Map<RandomListNode,RandomListNode> map = new HashMap<>();
         RandomListNode temp = pHead;
 

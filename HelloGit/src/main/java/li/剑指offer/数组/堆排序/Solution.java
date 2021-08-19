@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class Solution {
     public static void main(String[] args) {
-        int[] array = {8,9,5,4,1,1,4,5,2,4,-1,-999};
+        int[] array = {8,84,-44,-11,25,1,5,9,1,1,1};
         dumpSort(array);
         System.out.println(Arrays.toString(array));
     }
@@ -41,8 +41,6 @@ public class Solution {
             if (array[k] > temp){
                 array[i] = array[k];
                 i = k;
-            }else {
-                break;
             }
         }
         array[i] = temp;
