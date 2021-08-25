@@ -7,7 +7,12 @@ package li.剑指offer.数字.二进制中1的个数;
  *
  */
 public class Sloution {
-    public static void main(String[] args) {
-
+    public int NumberOf1(int n) {
+        int sum = 0;
+        while (n != 0){
+            sum++;
+            n = n & (n - 1);
+        }
+        return sum;
     }
 }
