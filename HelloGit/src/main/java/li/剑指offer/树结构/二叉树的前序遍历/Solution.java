@@ -7,21 +7,31 @@ import java.util.List;
  * 二叉树前序遍历。先输出父节点，然后向左遍历，然后向右遍历
  */
 public class Solution {
-    public List<Integer> preorderTraversal(ListNode root){
+    public static void main(String[] args) {
+        ListNode node = new ListNode(1);
+        ListNode node1 = new ListNode(2);
+        ListNode node2 = new ListNode(3);
+        node.left = node1;
+        node.right = node2;
+        List<Integer> list = preorderTraversal(node);
+        System.out.println(list);
+    }
+    public static List<Integer> preorderTraversal(ListNode root){
         List<Integer> list = new ArrayList<>();
         preOrder(root,list);
         return list;
 
     }
 
-    void preOrder(ListNode root, List<Integer> list){
+    static void  preOrder(ListNode root, List<Integer> list){
         if (root == null) return;
         list.add(root.val);
         preOrder(root.left, list);
         preOrder(root.right,list);
+        System.out.println("---");
     }
 
-    class ListNode{
+    static class ListNode{
         int val;
         ListNode left;
         ListNode right;

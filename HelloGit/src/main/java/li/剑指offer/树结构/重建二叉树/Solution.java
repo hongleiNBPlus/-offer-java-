@@ -11,26 +11,35 @@ import java.util.HashMap;
 public class Solution {
     //前序遍历序列{1,2,4,7,3,5,6,8}分为[根节点，左子树，右子树]，中序遍历序列{4,7,2,1,5,3,8,6}分为[左子树，根节点，右子树]
     //思路利用HashMap；通过将in[]数组的值作为key，以及数组的索引作为value方便能快速找到某个数在in数组中的索引
-    HashMap<Integer,Integer> hashMap = new HashMap<>();
-    int[] pre;
-    public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
-        this.pre = pre;
-        for(int i = 0; i < in.length; i++){
-            hashMap.put(in[i],i);
+
+
+    public TreeNode buildTree(int[] prerder, int[] inorder) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        //将中序遍历的值及索引放在map中，方便递归时获取左子树与右子树的数量及其根的索引
+        for (int i = 0; i < inorder.length; i++) {
+            map.put(inorder[i], i);
         }
-        return reCur(0, 0, in.length - 1);
+        //三个索引分别为
+        //当前根的的索引
+        //递归树的左边界，即数组左边界
+        //递归树的右边界，即数组右边界
+        return recur(0,0,inorder.length-1,map,prerder);
     }
 
-    //指针root指向pre数组根节点的位置；指针left指向in数组左边界，right指向in数组右边界
-    // res就是pre[root]根节点在in数组中位置
-    public TreeNode reCur(int root, int left, int right){
-        if(left > right) return null;
-        int res = hashMap.get(pre[root]);
-        TreeNode rootNode = new TreeNode(pre[root]);
-        rootNode.left = reCur(root + 1, left, res - 1);
-        rootNode.right = reCur(res - left + root + 1, res + 1, right);
+    TreeNode recur(int pre_root, int in_left, int in_right,HashMap<Integer,Integer> map, int[] preorder){
+        if(in_left > in_right) return null;// 相等的话就是自己
+        TreeNode root = new TreeNode(preorder[pre_root]);//获取root节点
+        int idx = map.get(preorder[pre_root]);//获取在中序遍历中根节点所在索引，以方便获取左子树的数量
+        //左子树的根的索引为先序中的根节点+1
+        //递归左子树的左边界为原来的中序in_left
+        //递归左子树的右边界为中序中的根节点索引-1
+        root.left = recur(pre_root+1, in_left, idx-1,map,preorder);
+        //右子树的根的索引为先序中的 当前根位置 + 左子树的数量 + 1
+        //递归右子树的左边界为中序中当前根节点+1
+        //递归右子树的右边界为中序中原来右子树的边界
+        root.right = recur(pre_root + (idx - 1 - in_left + 1) + 1, idx+1, in_right,map,preorder);
+        return root;
 
-        return rootNode;
     }
 
     public class TreeNode {

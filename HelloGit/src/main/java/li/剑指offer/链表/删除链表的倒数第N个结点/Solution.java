@@ -35,4 +35,5 @@ public class Solution {
             this.val = val;
         }
     }
+
 }
