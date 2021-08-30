@@ -7,22 +7,21 @@ import java.util.HashMap;
  * 输入：[1,2,3,3,3,3,4,5],3
  * 返回值：4
  *
- * 解题思路：利用HashMap
+ * 解题思路：二分法
  */
 public class Solution {
     public int GetNumberOfK(int [] array , int k){
-        int temp = 0;
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        return getTargetIndex(array,k) - getTargetIndex(array,k - 1);
+    }
 
-        for (int i = 0; i < array.length; i++) {
-            if(!hashMap.containsKey(array[i])){
-                hashMap.put(array[i],1);
-            }else {
-                temp = hashMap.get(array[i]);
-                hashMap.replace(array[i],++temp);
-            }
+    int getTargetIndex(int[] array, int target){
+        int left = 0, right = array.length - 1;
+        int mid;
+        while (left <= right){
+            mid = (left + right) / 2;
+            if (array[mid] <= target) left = mid + 1;
+            else right = mid - 1;
         }
-
-        return hashMap.getOrDefault(k,0);
+        return left;
     }
 }

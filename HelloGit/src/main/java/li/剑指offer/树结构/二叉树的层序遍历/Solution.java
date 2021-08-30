@@ -25,7 +25,18 @@ import java.util.Queue;
  * 需要记住每层的节点的个数
  */
 public class Solution {
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public static void main(String[] args) {
+        TreeNode node = new TreeNode(0);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        node.left = node1;
+        node.right = node2;
+        List<List<Integer>> list = levelOrder(node);
+        System.out.println(list);
+
+
+    }
+    public static List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> resList = new ArrayList<>();
         if (root == null) return resList;
         Queue<TreeNode> queue = new LinkedList<>();
@@ -50,7 +61,7 @@ public class Solution {
         return resList;
     }
 
-    public class TreeNode{
+    public static class TreeNode{
         int val;
         TreeNode left = null;
         TreeNode right = null;
