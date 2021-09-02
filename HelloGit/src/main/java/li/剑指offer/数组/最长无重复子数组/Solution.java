@@ -11,27 +11,29 @@ import java.util.Map;
  * 返回值：3
  * 说明：[2,3,4]是最长子数组
  *
- * 解题思路：利用hashMap与双指针
+ * 解题思路：利用hashMap与双指针   hashMap存放数组的值与对应的索引
+ * 1、start 无重复数组的左索引  end 无重复数组的右索引  res无重复数组长度
+ * 2、判断map是否包含arr数组元素，若包括更新start的值，start = Math.max(start, map.get(arr[end]) + 1);
+ * 3、更新res的长度res = Math.max(res, end - start + 1);
+ * 4、若不包含直接放入map中
  */
 public class Solution {
     public static void main(String[] args) {
-        String s = "abcabcbb";
-        int res = maxLength(s);
-        System.out.println(res);
-
+        int[] res = {3,3,2,1,3,3,3,1};
+        int max = maxLength(res);
+        System.out.println(max);
     }
-    public static int maxLength (String s) {
-        char[] chars = s.toCharArray();
-        int res = 0;
+    public static int maxLength (int[] arr) {
+        // write code here
         int start = 0;
-        Map<Character,Integer> map = new HashMap<>();
-        for (int end = 0; end < chars.length; end++) {
-            //代表存在重复值，并更新重复值起始点
-            if (map.containsKey(chars[end])) start = Math.max(start, map.get(chars[end]) + 1);
-
-            //更新子数组的长度
-            res = Math.max(res,end - start + 1);
-            map.put(chars[end],end);
+        int res = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int end = 0; end < arr.length; end++){
+            if(map.containsKey(arr[end])){
+                start = Math.max(start, map.get(arr[end]) + 1);
+            }
+            res = Math.max(res, end - start + 1);
+            map.put(arr[end], end);
         }
         return res;
     }
