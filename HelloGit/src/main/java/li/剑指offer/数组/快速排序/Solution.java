@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Solution {
     public static void main(String[] args) {
-        int[] num = {30,15,44,25,50,10,70};
+        int[] num = {30,15,44,25,50,10,70,5,5};
         quickSort(num,0,num.length-1);
         System.out.println(Arrays.toString(num));
     }
@@ -29,11 +29,11 @@ public class Solution {
         num[i] = value;
 
         if(i == j){
-            i--;
-            j++;
+            i++;
+            j--;
         }
 
-        if (left < i) quickSort(num,left,i);
-        if (j < right)quickSort(num,j,right);
+        if (left < j) quickSort(num,left,j);
+        if (i < right)quickSort(num,i,right);
     }
 }
