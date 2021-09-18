@@ -37,7 +37,7 @@ public class Solution {
         //右子树的根的索引为先序中的 当前根位置 + 左子树的数量 + 1
         //递归右子树的左边界为中序中当前根节点+1
         //递归右子树的右边界为中序中原来右子树的边界
-        root.right = recur(pre_root + (idx - 1 - in_left + 1) + 1, idx+1, in_right,map,preorder);
+        root.right = recur(pre_root + (idx - in_left) + 1, idx+1, in_right,map,preorder);
         return root;
 
     }

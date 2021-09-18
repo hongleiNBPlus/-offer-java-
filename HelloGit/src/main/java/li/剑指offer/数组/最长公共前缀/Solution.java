@@ -9,22 +9,17 @@ package li.剑指offer.数组.最长公共前缀;
  */
 public class Solution {
     public String longestCommonPrefix(String[] strs) {
-        StringBuilder strb = new StringBuilder();
-        String res = strs[0];
-        boolean flag = true;
-        for (int i = 1; i < strs.length; i++) {
-            if(strs[i].length() < res.length()) res = strs[i];
-        }
-
-        for (int j = 0; j < res.length(); j++) {
-            char c = strs[0].charAt(j);
-            for (int k = 1; k < strs.length; k++) {
-                if(strs[k].charAt(j) != c) flag = false;
+        if(strs.length == 0) return "";
+        int len = strs.length;
+        int num = strs[0].length();
+        for(int i = 0; i < num; i ++){
+            char c = strs[0].charAt(i);
+            for(int j = 1; j < len; j++){
+                if(i == strs[j].length() || strs[j].charAt(i) != c){
+                    return strs[0].substring(0,i);
+                }
             }
-
-            if (flag) strb.append(c);
-            else break;
         }
-        return strb.toString();
+        return strs[0];
     }
 }
