@@ -18,16 +18,25 @@ public class Solution {
         for(int i = 0; i< 32; i++){//求每个二进制位的和
             int sum = 0;
             for(int num : arr){
-                sum += (num >>i & 1);//依次右移num，同1相与，计算每一位上1的个数
+                sum += (num >> i & 1);//依次右移num，同1相与，计算每一位上1的个数
             }
             binarySum[i] = sum;
         }
         int res = 0;
         for (int i = 0; i< 32; i++){
-            if(binarySum[i]%k!=0){
+            if(binarySum[i] % k != 0){
                 res += 1<<i;//左移恢复
             }
         }
         return res;
+
+
+
+        //若k为偶数可以使用下面代码
+//        int signal = 0;
+//        for(int i = 0; i < nums.length; i++){
+//            signal ^= nums[i];
+//        }
+//        return signal;
     }
 }

@@ -36,8 +36,6 @@ public class Solution {
 
         ArrayList<Integer> res = new ArrayList<>();
 
-        if(matrix.length == 0) return res;
-
         while (true){
             for (int i = l; i <= r; i++) {
                 res.add(matrix[up][i]);

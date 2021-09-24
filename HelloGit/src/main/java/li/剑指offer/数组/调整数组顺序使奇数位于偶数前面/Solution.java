@@ -10,29 +10,22 @@ import java.util.Queue;
  * 输入：[1,2,3,4]
  * 返回值：[1,3,2,4]
  *
- * 思路：利用两个队列，将奇数放入一个队列，将偶数放入一个队列
- * 遍历两个队列将奇数放前面偶数放后面
+ * 思路: 双指针
  */
 public class Solution {
     public int[] reOrderArray (int[] array) {
-        Queue<Integer> list1 = new LinkedList<>();
-        Queue<Integer> list2 = new LinkedList<>();
+        int l = 0;
+        int r = array.length - 1;
+        int[] res = new int[array.length];
+        int left = 0;
+        int right = array.length - 1;
+        while(l < array.length && r >= 0){
+            if(array[l] % 2 == 1) res[left++] = array[l++];
+            else l++;
 
-        for (int i = 0; i < array.length; i++) {
-            if(array[i] % 2 ==1 ){
-                list1.add(array[i]);
-            }else {
-                list2.add(array[i]);
-            }
+            if(array[r] % 2 == 0) res[right--] = array[r--];
+            else r--;
         }
-
-        for (int i = 0; i < array.length; i++) {
-            if(!list1.isEmpty()){
-                array[i] = list1.poll();
-            }else {
-                array[i] = list2.poll();
-            }
-        }
-        return array;
+        return res;
     }
 }
