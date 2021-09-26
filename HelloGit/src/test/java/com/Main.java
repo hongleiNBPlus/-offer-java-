@@ -1,28 +1,24 @@
 package com;
 
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<Integer>(){{
-            add(5);
-            add(3);
-            add(10);
-            add(7);
-            add(-99);
-            add(99);
-            add(15);
-        }};
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] res = new int[n];
+        for (int i = 0; i < n; i++) {
+            res[i] = sc.nextInt();
+        }
 
-//        for (int i = list.size() - 1; i >= 0; i--) {
-////            if (list.get(i) < 10) list.remove(i);
-////        }
-////
-////        System.out.println(list);
+        int maxV = 0;
+        for (int i = 0; i < res.length; i++) {
+            Math.max(maxV,res[i]);
+        }
 
-        list.removeIf(i -> i < 10);
-        System.out.println(list);
+        System.out.println(maxV);
     }
 }
 

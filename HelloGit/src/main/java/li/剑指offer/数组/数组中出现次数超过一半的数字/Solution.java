@@ -17,22 +17,6 @@ package li.剑指offer.数组.数组中出现次数超过一半的数字;
  */
 public class Solution {
     public int MoreThanHalfNum_Solution(int [] array){
-//        //1、HashMap方法
-//        HashMap<Integer, Integer> hashmap = new HashMap<>();
-//        int temp = 0;
-//        int res = 0;
-//        for (int i = 0; i < array.length; i++) {
-//            if(!hashmap.containsKey(array[i])){
-//                hashmap.put(array[i], 1);
-//            }else {
-//                temp = hashmap.get(array[i]);
-//                hashmap.put(array[i], ++temp);
-//            }
-//
-//            if(hashmap.get(array[i]) > array.length / 2) res = array[i];
-//        }
-//        return res;
-
         //投票法：
         int votes = 0;
         int x = 0;
