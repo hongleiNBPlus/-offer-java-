@@ -5,20 +5,19 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] res = new int[n];
-        for (int i = 0; i < n; i++) {
-            res[i] = sc.nextInt();
+    public int[] bubbleSort (int[] arr) {
+        // write code here
+        int temp;
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if(arr[i] < arr[j]){
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
         }
-
-        int maxV = 0;
-        for (int i = 0; i < res.length; i++) {
-            Math.max(maxV,res[i]);
-        }
-
-        System.out.println(maxV);
+        return arr;
     }
 }
 
